@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <title>Checkout - EcoResidencial</title>
+    <style>
+      /* Estilos específicos para o checkout */
+      .checkout-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .checkout-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+      }
+      .cart-items {
+        border: 1px solid #eee;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      .cart-item:last-child {
+        border-bottom: none;
+      }
+      .cart-item img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        margin-right: 15px;
+        border-radius: 4px;
+      }
+      .item-details {
+        flex-grow: 1;
+      }
+      .item-details h4 {
+        margin: 0 0 5px 0;
+        color: #555;
+      }
+      .item-details p {
+        margin: 0;
+        color: #777;
+        font-size: 0.9em;
+      }
+      .item-subtotal {
+        font-weight: bold;
+        color: #333;
+      }
+      .cart-summary {
+        text-align: right;
+        font-size: 1.1em;
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+      }
+      .cart-summary p {
+        margin: 5px 0;
+      }
+      .payment-options {
+        margin-top: 30px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+      }
+      .payment-options h3 {
+        margin-bottom: 15px;
+        color: #333;
+      }
+      .payment-option {
+        margin-bottom: 10px;
+      }
+      .payment-option label {
+        display: block;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .payment-option label:hover {
+        background-color: #f9f9f9;
+      }
+      .payment-option input[type="radio"] {
+        margin-right: 10px;
+      }
+      .checkout-actions {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .checkout-actions .btn {
+        padding: 12px 25px;
+        font-size: 1.1em;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .checkout-actions .btn:hover {
+        background-color: #45a049;
+      }
+      .empty-cart {
+        text-align: center;
+        padding: 50px 0;
+        color: #777;
+      }
+
+      .empty-cart p {
+        margin-bottom: 30px;
+    }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">EcoResidencial</a>
+        <div class="burger" id="burger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="menu" id="menu">
+          <li><a href="../../index.html">Início</a></li>
+          <li><a href="../../index.html#sobre">Sobre</a></li>
+          <li><a href="../pages/products.html">Produtos</a></li>
+          <li><a href="../pages/userPage.html">Conta</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="checkout-container">
+        <h2>Resumo da Compra</h2>
+        <div id="cartItemsContainer" class="cart-items">
+          <!-- Itens do carrinho serão carregados aqui -->
+        </div>
+        <div id="cartSummary" class="cart-summary">
+          <!-- Total do carrinho será carregado aqui -->
+        </div>
+
+        <div class="payment-options">
+          <h3>Selecione a Forma de Pagamento</h3>
+          <div class="payment-option">
+            <label>
+              <input type="radio" name="paymentMethod" value="pix" checked /> Pix
+            </label>
+          </div>
+          <div class="payment-option">
+            <label>
+              <input type="radio" name="paymentMethod" value="credit_card" /> Cartão de Crédito
+            </label>
+          </div>
+          <div class="payment-option">
+            <label>
+              <input type="radio" name="paymentMethod" value="bank_transfer" /> Transferência Bancária
+            </label>
+          </div>
+        </div>
+
+        <div class="checkout-actions">
+          <button class="btn" id="finalizePurchaseBtn">Finalizar Compra</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footerright">
+        <a href="#" class="logo">EcoResidencial</a>
+      </div>
+      
+      <div class="footerCenter">
+        <ul>
+          <li>Menus</li>
+          <li><a href="../../index.html">Início</a></li>
+          <li><a href="../../index.html#sobre">Sobre</a></li>
+          <li><a href="../pages/products.html">Produtos</a></li>
+          <li><a href="../pages/userPage.html">Conta</a></li>
+      </div>
+
+      <div class="footerleft">
+        <ul>
+          <li>Contato</li>
+          <li>(99) 99999-0000</li>
+          <li>contato@ecoresidencial.com.br </li>
+        </ul>
+      </div>
+    </footer>
+
+    <p class="copy">EcoResidencial – Todos os direitos reservados – 2025</p>
+
+    <script>
+      function carregarCarrinho() {
+        const carrinho = JSON.parse(localStorage.getItem('carrinhoEcoResidencial')) || [];
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartSummary = document.getElementById('cartSummary');
+        let totalCompra = 0;
+
+        if (carrinho.length === 0) {
+          cartItemsContainer.innerHTML = '<div class="empty-cart"><p>Seu carrinho está vazio.</p><a href="products.html" class="btn">Voltar às Compras</a></div>';
+          cartSummary.innerHTML = '';
+          return;
+        }
+
+        cartItemsContainer.innerHTML = ''; // Limpa o conteúdo existente
+
+        carrinho.forEach(item => {
+          // Garantir que preco e quantidade são números válidos
+          const itemPreco = typeof item.preco === 'number' ? item.preco : parseFloat(item.preco || '0');
+          const itemQuantidade = typeof item.quantidade === 'number' ? item.quantidade : parseInt(item.quantidade || '0', 10);
+
+          const itemTotal = itemPreco * itemQuantidade;
+          totalCompra += itemTotal;
+
+          const itemDiv = document.createElement('div');
+          itemDiv.classList.add('cart-item');
+          itemDiv.innerHTML = `
+            <img src="${item.imagem || 'https://via.placeholder.com/80x80?text=Sem+Imagem'}" alt="${item.nome}" />
+            <div class="item-details">
+              <h4>${item.nome}</h4>
+              <p>Quantidade: ${itemQuantidade}</p>
+              <p>Preço Unitário: R$ ${itemPreco.toFixed(2)}</p>
+            </div>
+            <span class="item-subtotal">R$ ${itemTotal.toFixed(2)}</span>
+            <div class="item-actions" style="margin-left: 20px;">
+              <button class="btn btn-sm decrease-quantity-btn" data-item-id="${item.id}" style="border-color: #f0ad4e;">-</button>
+              <button class="btn btn-sm remove-item-btn" data-item-id="${item.id}" style="border-color: #dc3545;">Remover</button>
+            </div>
+          `;
+          cartItemsContainer.appendChild(itemDiv);
+        });
+
+        cartSummary.innerHTML = `
+          <h3>Total da Compra: R$ ${totalCompra.toFixed(2)}</h3>
+        `;
+
+        // Adicionar event listeners para os novos botões
+        document.querySelectorAll('.remove-item-btn').forEach(button => {
+          button.addEventListener('click', (e) => {
+            const itemId = e.target.dataset.itemId;
+            removerItem(itemId);
+          });
+        });
+
+        document.querySelectorAll('.decrease-quantity-btn').forEach(button => {
+          button.addEventListener('click', (e) => {
+            const itemId = e.target.dataset.itemId;
+            diminuirQuantidade(itemId);
+          });
+        });
+      }
+
+      // Função para remover um item do carrinho
+      function removerItem(itemId) {
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoEcoResidencial')) || [];
+        carrinho = carrinho.filter(item => item.id !== itemId);
+        localStorage.setItem('carrinhoEcoResidencial', JSON.stringify(carrinho));
+        carregarCarrinho(); // Recarrega o carrinho para atualizar a UI
+      }
+
+      // Função para diminuir a quantidade de um item no carrinho
+      function diminuirQuantidade(itemId) {
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoEcoResidencial')) || [];
+        const itemIndex = carrinho.findIndex(item => item.id === itemId);
+
+        if (itemIndex > -1) {
+          if (carrinho[itemIndex].quantidade > 1) {
+            carrinho[itemIndex].quantidade -= 1;
+          } else {
+            // Se a quantidade for 1, remove o item completamente
+            carrinho.splice(itemIndex, 1);
+          }
+          localStorage.setItem('carrinhoEcoResidencial', JSON.stringify(carrinho));
+          carregarCarrinho(); // Recarrega o carrinho para atualizar a UI
+        }
+      }
+
+      function finalizarCompra() {
+        // Obter a forma de pagamento selecionada
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+        let mensagemPagamento = 'Nenhuma forma de pagamento selecionada.';
+
+        if (paymentMethod) {
+          switch (paymentMethod.value) {
+            case 'pix':
+              mensagemPagamento = 'Pagamento via Pix selecionado.';
+              break;
+            case 'credit_card':
+              mensagemPagamento = 'Pagamento via Cartão de Crédito selecionado.';
+              break;
+            case 'bank_transfer':
+              mensagemPagamento = 'Pagamento via Transferência Bancária selecionado.';
+              break;
+          }
+        }
+        
+        alert(`Compra finalizada com sucesso!
+            ${mensagemPagamento}
+            Seu pedido será processado.`);
+            localStorage.removeItem('carrinhoEcoResidencial'); // Limpa o carrinho
+            window.location.href = 'products.html'; // Redireciona de volta para a página de produtos
+        }
+
+          document.addEventListener('DOMContentLoaded', () => {
+          carregarCarrinho();
+
+          document.getElementById('finalizePurchaseBtn').addEventListener('click', finalizarCompra);
+      });
+    </script>
+  </body>
+</html> 
