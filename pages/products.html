@@ -37,6 +37,13 @@
     </main>
 
     <script>
+      const burger = document.getElementById("burger");
+      const menu = document.getElementById("menu");
+
+      burger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+        burger.classList.toggle("toggle");
+      });
       // Função para adicionar um produto ao carrinho no localStorage
       function adicionarAoCarrinho(produto) {
         let carrinho = JSON.parse(localStorage.getItem('carrinhoEcoResidencial')) || [];
