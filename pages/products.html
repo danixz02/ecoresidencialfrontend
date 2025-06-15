@@ -55,7 +55,7 @@
 
       async function carregarMateriais() {
         try {
-          const response = await fetch('http://localhost:3000/materiais');
+          const response = await fetch('https://ecoresidencialapi.onrender.com//materiais');
           const materiais = await response.json();
           const cardContainer = document.getElementById('cardContainer');
 
@@ -72,7 +72,7 @@
           cardContainer.innerHTML = materiais.map(material => `
             <div class="material-card">
               <img 
-                src="${material.imagem ? `http://localhost:3000/uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}" 
+                src="${material.imagem ? `https://ecoresidencialapi.onrender.com//uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}" 
                 alt="${material.nome}"
                 class="material-image"
               />
@@ -88,7 +88,7 @@
                         data-material-id="${material._id}"
                         data-material-name="${material.nome}"
                         data-material-price="${material.valor}"
-                        data-material-image="${material.imagem ? `http://localhost:3000/uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}">
+                        data-material-image="${material.imagem ? `https://ecoresidencialapi.onrender.com//uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}">
                   Adicionar ao Carrinho
                 </button>
                 </div>

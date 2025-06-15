@@ -181,9 +181,9 @@
         
         // Usar a urlFotoPerfil se disponível, senão fotoPerfil e fallback
         if (usuario.urlFotoPerfil) {
-          profileImage.src = `http://localhost:3000${usuario.urlFotoPerfil}`;
+          profileImage.src = `https://ecoresidencialapi.onrender.com/${usuario.urlFotoPerfil}`;
         } else if (usuario.fotoPerfil) {
-          profileImage.src = `http://localhost:3000/uploads/${usuario.fotoPerfil}`;
+          profileImage.src = `https://ecoresidencialapi.onrender.com//uploads/${usuario.fotoPerfil}`;
         } else {
           profileImage.src = 'https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg';
         }
@@ -197,7 +197,7 @@
         formData.append('usuarioId', usuario._id);
 
         try {
-          const response = await fetch('http://localhost:3000/atualizar-foto-perfil', {
+          const response = await fetch('https://ecoresidencialapi.onrender.com//atualizar-foto-perfil', {
             method: 'POST',
             body: formData
           });
@@ -227,7 +227,7 @@
         lista.innerHTML = 'Carregando...';
 
         try {
-          const response = await fetch('http://localhost:3000/materiais');
+          const response = await fetch('https://ecoresidencialapi.onrender.com//materiais');
           const materiais = await response.json();
 
           // Filtra só os materiais do usuário logado
@@ -273,7 +273,7 @@
       async function excluirMaterial(materialId) {
         const usuario = verificarLogin();
         try {
-          const response = await fetch(`http://localhost:3000/remover-material/${materialId}`, {
+          const response = await fetch(`https://ecoresidencialapi.onrender.com//remover-material/${materialId}`, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json'
@@ -342,7 +342,7 @@
           }
 
           try {
-            const response = await fetch('http://localhost:3000/atualizar-perfil', {
+            const response = await fetch('https://ecoresidencialapi.onrender.com//atualizar-perfil', {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json'
@@ -391,7 +391,7 @@
           }
 
           try {
-            const response = await fetch("http://localhost:3000/adicionar", {
+            const response = await fetch("https://ecoresidencialapi.onrender.com//adicionar", {
               method: "POST",
               body: formData,
             });
