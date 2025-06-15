@@ -281,4 +281,4 @@ app.delete('/remover-material/:id', verificarTipoUsuario, async (req, res) => {
 });
 
 // ==== Inicialização do Servidor ====
-// app.listen(PORT, () => console.log(`Servidor rodando na porta http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
