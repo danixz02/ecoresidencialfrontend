@@ -28,7 +28,7 @@ mongoose.connect(MONGODB_URI, {
 
 // ==== Middlewares ====
 app.use(cors({
-  origin: ['https://ecoresidencialapi.onrender.com'/* , 'https://ecoresidencial.vercel.app' */],
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
