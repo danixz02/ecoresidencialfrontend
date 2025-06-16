@@ -79,7 +79,7 @@
           cardContainer.innerHTML = materiais.map(material => `
             <div class="material-card">
               <img 
-                src="${material.imagem ? `https://ecoresidencialapi.onrender.com//uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}" 
+                src="${material.imagem ? `https://ecoresidencialapi.onrender.com/uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}" 
                 alt="${material.nome}"
                 class="material-image"
               />
@@ -91,11 +91,11 @@
 
                 <div class="material-contact">
 
-                                  <button class="add-to-cart-material-btn" 
-                        data-material-id="${material._id}"
-                        data-material-name="${material.nome}"
-                        data-material-price="${material.valor}"
-                        data-material-image="${material.imagem ? `https://ecoresidencialapi.onrender.com//uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}">
+                  <button class="add-to-cart-material-btn" 
+                  data-material-id="${material._id}"
+                  data-material-name="${material.nome}"
+                  data-material-price="${material.valor}"
+                  data-material-image="${material.imagem ? `https://ecoresidencialapi.onrender.com/uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}">
                   Adicionar ao Carrinho
                 </button>
                 </div>
