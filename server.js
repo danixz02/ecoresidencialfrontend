@@ -28,16 +28,13 @@ mongoose.connect(MONGODB_URI, {
 
 // ==== Middlewares ====
 app.use(cors({
-<<<<<<< HEAD
   origin: ['https://ecoresidencialapi.onrender.com', 'https://ecoresidencial.vercel.app'],
-=======
-  origin: ['https://ecoresidencialapi.onrender.com/', 'https://ecoresidencial.vercel.app/'],
->>>>>>> 6fb7fd09996118dd238292b5a1f84ac7e79af75c
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // ==== Multer Config ====
 const storage = multer.diskStorage({
