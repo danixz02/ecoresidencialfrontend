@@ -2,11 +2,15 @@
 
 ## 📋 Sobre o Projeto
 <<<<<<< HEAD
+<<<<<<< HEAD
 O EcoResidencial é uma plataforma web que conecta condomínios e recicladores, facilitando a gestão e comercialização de materiais recicláveis. O projeto visa promover a sustentabilidade e a economia circular através da tecnologia. <br>
 Preview: https://ecoresidencial.vercel.app/
 =======
 O EcoResidencial é uma plataforma web que conecta condomínios e recicladores, facilitando a gestão e comercialização de materiais recicláveis. O projeto visa promover a sustentabilidade e a economia circular através da tecnologia.
 >>>>>>> 6fb7fd0 (ajuste nas rotas)
+=======
+O EcoResidencial é uma plataforma web que conecta condomínios e recicladores, facilitando a gestão e comercialização de materiais recicláveis. O projeto visa promover a sustentabilidade e a economia circular através da tecnologia.
+>>>>>>> 6fb7fd09996118dd238292b5a1f84ac7e79af75c
 
 ## 🚀 Tecnologias Utilizadas
 
