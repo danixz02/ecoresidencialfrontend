@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/global.css" />
     <title>Produtos - EcoResidencial</title>
+
+    <!-- CSS -->
+     <style>
+      .material-contact-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: rgba(0, 0, 0, 0.621);
+        text-decoration: none;
+      }
+      .material-contact-link:hover {
+        border-bottom: 1px solid #000;
+      }
+     </style>
   </head>
   <body>
     <header>
@@ -35,6 +48,31 @@
         <!-- <button class="btn" id="viewCartBtn">Ver Carrinho</button> -->
       </div>
     </main>
+
+    <footer>
+      <div class="footerright">
+        <a href="#" class="logo">EcoResidencial</a>
+      </div>
+      
+      <div class="footerCenter">
+        <ul>
+          <li>Menus</li>
+          <li><a href="../../index.html">Início</a></li>
+          <li><a href="../../index.html#sobre">Sobre</a></li>
+          <li><a href="../pages/products.html">Produtos</a></li>
+          <li><a href="../pages/userPage.html">Conta</a></li>
+      </div>
+
+      <div class="footerleft">
+        <ul>
+          <li>Contato</li>
+          <li>(99) 99999-0000</li>
+          <li>contato@ecoresidencial.com.br </li>
+        </ul>
+      </div>
+    </footer>
+
+    <p class="copy">EcoResidencial – Todos os direitos reservados – 2025</p>
 
     <script>
       const burger = document.getElementById("burger");
@@ -88,7 +126,7 @@
                 <p><strong>Descrição:</strong> ${material.descricao}</p>
                 <p><strong>Quantidade:</strong> ${material.quantidade}</p>
                 <h5 class="valor">R$ ${material.valor}</h5>
-
+                <p class="material-category"><strong>Categoria:</strong> ${material.tipo}</p>
                 <div class="material-contact">
 
                   <button class="add-to-cart-material-btn" 
@@ -98,6 +136,10 @@
                   data-material-image="${material.imagem ? `https://ecoresidencialapi.onrender.com/uploads/${material.imagem}` : 'https://via.placeholder.com/300x200?text=Sem+Imagem'}">
                   Adicionar ao Carrinho
                 </button>
+
+                  <a href="https://wa.me/${material.contato}" class="material-contact-link">
+                    Tenho Dúvidas Sobre o Material
+                  </a>
                 </div>
               </div>
             </div>
@@ -137,30 +179,5 @@
         });
       });
     </script>
-
-    <footer>
-      <div class="footerright">
-        <a href="#" class="logo">EcoResidencial</a>
-      </div>
-      
-      <div class="footerCenter">
-        <ul>
-          <li>Menus</li>
-          <li><a href="../../index.html">Início</a></li>
-          <li><a href="../../index.html#sobre">Sobre</a></li>
-          <li><a href="../pages/products.html">Produtos</a></li>
-          <li><a href="../pages/userPage.html">Conta</a></li>
-      </div>
-
-      <div class="footerleft">
-        <ul>
-          <li>Contato</li>
-          <li>(99) 99999-0000</li>
-          <li>contato@ecoresidencial.com.br </li>
-        </ul>
-      </div>
-    </footer>
-
-    <p class="copy">EcoResidencial – Todos os direitos reservados – 2025</p>
   </body>
 </html>
